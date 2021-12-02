@@ -5,18 +5,23 @@ import Alert from 'react-bootstrap/Alert';
 function LocationBar() {
   const [location, setLocation] = useState([null,null])
   const [showLocation, setShowLocation] = useState(true);
-
+  const weatherKey = process.env.REACT_APP_WEATHER_KEY
 
   function getLocation() {
     navigator.geolocation.getCurrentPosition((position) => {
       setLocation([position.coords.latitude, position.coords.longitude])
     })
-    console.log("process.env", process.env.REACT_APP_VAR)
   }
 
   useEffect(() => {
     getLocation()
   }, []);
+
+  useEffect(() => {
+    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${location[0]}&lon=${location[1]}&appid=${weatherKey}&units=imperial`)
+      .then(response => response.json())
+      .then(data => console.log(`Currently ${data?.current?.temp}°, ${data?.current?.weather[0].description}`))
+  }, [location])
 
   if (showLocation) {
     return (
