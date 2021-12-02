@@ -11,6 +11,7 @@ function LocationBar() {
     navigator.geolocation.getCurrentPosition((position) => {
       setLocation([position.coords.latitude, position.coords.longitude])
     })
+    console.log("process.env", process.env.REACT_APP_VAR)
   }
 
   useEffect(() => {
