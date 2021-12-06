@@ -1,4 +1,12 @@
 {
+  "starts-stops": [
+    {
+      "id": 1,
+      "type": "start",
+      "time": null,
+      "location-x,y": null
+    }
+  ],
   "posts": [
     {
       "id": 1,
