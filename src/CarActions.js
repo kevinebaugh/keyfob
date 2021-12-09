@@ -10,7 +10,6 @@ function CarActions({ handleStartStop }) {
         {/* Add loading state https://react-bootstrap.github.io/components/buttons/#button-loading-state */}
         <Button id="start" onClick={handleStartStop} variant="outline-success">Start</Button>
         <Button id="stop" onClick={handleStartStop} variant="outline-danger">Stop</Button>
-        <Button variant="outline-secondary">Locate</Button>
       </ButtonGroup>
     </div>
   )
