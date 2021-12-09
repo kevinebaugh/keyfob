@@ -55,7 +55,7 @@ function App() {
             <EventHistory startStopEvents={startStopEvents} />
           </Route>
           <Route path="/tools">
-            <Tools />
+            <Tools startStopEvents={startStopEvents} />
           </Route>
           <Route path="/">
             <About />
