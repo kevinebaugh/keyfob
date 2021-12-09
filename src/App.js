@@ -6,9 +6,11 @@ import {
   Link
 } from "react-router-dom";
 import './App.css';
+import About from './About'
 import LocationBar from './LocationBar'
 import CarActions from './CarActions'
 import EventHistory from './EventHistory'
+import Tools from './Tools'
 
 function App() {
   const [startStopEvents, setStartStopEvents] = useState(null)
@@ -39,11 +41,28 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <LocationBar />
-      <CarActions handleStartStop={handleStartStop} />
-      <EventHistory startStopEvents={startStopEvents} />
-    </div>
+    <Router>
+      <div className="App">
+        <nav>
+          <Link to="/">About</Link>
+          <Link to="/car-actions">Car Actions</Link>
+          <Link to="/tools">Tools</Link>
+        </nav>
+        <Switch>
+          <Route path="/car-actions">
+            <LocationBar />
+            <CarActions handleStartStop={handleStartStop} />
+            <EventHistory startStopEvents={startStopEvents} />
+          </Route>
+          <Route path="/tools">
+            <Tools />
+          </Route>
+          <Route path="/">
+            <About />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
