@@ -17,7 +17,6 @@ function Tools( {startStopEvents} ) {
 
   return (
     <div className="Tools">
-      <h1>Tools</h1>
       <ButtonGroup vertical>
         <Button onClick={deleteAllEvents} variant="outline-danger">{`⚠️ Delete all ${startStopEvents?.length} events`}</Button>
       </ButtonGroup>

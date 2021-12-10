@@ -4,24 +4,28 @@ import Alert from 'react-bootstrap/Alert';
 
 function LocationBar() {
   const [location, setLocation] = useState([null, null])
-  const [showLocation, setShowLocation] = useState(true);
+  const [showLocationBar, setShowLocationBar] = useState(true);
+  const [currentWeatherString, setCurrentWeatherString] = useState("")
   const weatherKey = process.env.REACT_APP_WEATHER_KEY
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
       setLocation([position.coords.latitude, position.coords.longitude])
-
-      fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${location[0]}&lon=${location[1]}&appid=${weatherKey}&units=imperial`)
-        .then(response => response.json())
-        .then(data => console.log(`Currently ${data?.current?.temp}°, ${data?.current?.weather[0].description}`))
     })
-  }, []);
+  }, [weatherKey]);
 
-  if (showLocation) {
+  useEffect(() => {
+    fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${location[0]}&lon=${location[1]}&appid=${weatherKey}&units=imperial`)
+      .then(response => response.json())
+      .then(data => setCurrentWeatherString(`Currently ${data?.current?.temp}°, ${data?.current?.weather[0].description}`))
+  }, [])
+
+  if (showLocationBar) {
     return (
-      <div className="App">
-        <Alert variant="info" onClose={() => setShowLocation(false)} dismissible>
-          Current location: { (location[0] && location[1] ) ? location.join(', ') : "Location not set"}
+      <div className="LocationBar">
+        <Alert variant="info" onClose={() => setShowLocationBar(false)} dismissible>
+          <b>Current location:</b> { (location[0] && location[1] ) ? location.join(', ') : "Location not set"} <br/>
+          <b>Current weather:</b> {currentWeatherString}
         </Alert>
 
       </div>
