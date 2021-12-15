@@ -18,7 +18,7 @@ function App() {
   const [eventsShouldBeUpdated, setEventsShouldBeUpdated] = useState(null)
 
   useEffect(() => {
-    fetch('http://localhost:4000/starts-stops')
+    fetch('http://localhost:4000/starts-stops?_sort=time&_order=desc')
       .then(response => response.json())
       .then(data => setStartStopEvents(data))
   }, [eventsShouldBeUpdated])

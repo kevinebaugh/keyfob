@@ -17,8 +17,8 @@ function LocationBar() {
   useEffect(() => {
     fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${location[0]}&lon=${location[1]}&appid=${weatherKey}&units=imperial`)
       .then(response => response.json())
-      // .then(data => setCurrentWeatherString(`Currently 32°, partly cloudy`))
-      .then(data => setCurrentWeatherString(`Currently ${data?.current?.temp}°, ${data?.current?.weather[0].description}`))
+      .then(data => setCurrentWeatherString(`Currently 32°, partly cloudy`))
+      // .then(data => setCurrentWeatherString(`Currently ${data?.current?.temp}°, ${data?.current?.weather[0].description}`))
   }, [])
 
   if (showLocationBar) {
