@@ -15,12 +15,13 @@ import Button from 'react-bootstrap/Button';
 
 function App() {
   const [startStopEvents, setStartStopEvents] = useState(null)
+  const [eventsShouldBeUpdated, setEventsShouldBeUpdated] = useState(null)
 
   useEffect(() => {
     fetch('http://localhost:4000/starts-stops')
       .then(response => response.json())
       .then(data => setStartStopEvents(data))
-  }, [startStopEvents])
+  }, [eventsShouldBeUpdated])
 
   function handleStartStop(event) {
     const eventInfo = {
@@ -38,7 +39,12 @@ function App() {
       .then((response) => response.json() )
       .then((response) => {
         setStartStopEvents(Object.assign(startStopEvents, response))
+        triggerRefreshEvents()
       })
+  }
+
+  function triggerRefreshEvents() {
+    setEventsShouldBeUpdated(Math.random())
   }
 
   return (
@@ -59,7 +65,7 @@ function App() {
             <EventHistory startStopEvents={startStopEvents} />
           </Route>
           <Route path="/tools">
-            <Tools startStopEvents={startStopEvents} />
+            <Tools startStopEvents={startStopEvents} triggerRefreshEvents={triggerRefreshEvents} />
           </Route>
           <Route path="/">
             <About />

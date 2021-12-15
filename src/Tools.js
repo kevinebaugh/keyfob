@@ -3,7 +3,7 @@ import './App.css';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Button from 'react-bootstrap/Button';
 
-function Tools( {startStopEvents} ) {
+function Tools( {startStopEvents, triggerRefreshEvents} ) {
 
   function deleteAllEvents() {
     startStopEvents.map((event) => {
@@ -11,7 +11,10 @@ function Tools( {startStopEvents} ) {
       method: "DELETE",
     })
       .then((r) => r.json())
-      .then(() => console.log(`Deleted ${event.id}`));
+      .then(() => {
+        console.log(`Deleted ${event.id}`)
+        triggerRefreshEvents()
+      });
     })
   }
 

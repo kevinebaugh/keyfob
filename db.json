@@ -1,24 +1,3 @@
 {
-  "starts-stops": [
-    {
-      "type": "start",
-      "time": "2021-12-10T20:50:43.605Z",
-      "id": 1
-    },
-    {
-      "type": "stop",
-      "time": "2021-12-10T20:50:44.088Z",
-      "id": 2
-    }
-  ],
-  "car-locations": [
-    {
-      "id": 0,
-      "time": null,
-      "location": null
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  "starts-stops": []
 }
