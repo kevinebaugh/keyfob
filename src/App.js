@@ -11,7 +11,6 @@ import LocationBar from './LocationBar'
 import CarActions from './CarActions'
 import EventHistory from './EventHistory'
 import Tools from './Tools'
-import Button from 'react-bootstrap/Button';
 
 function App() {
   const [startStopEvents, setStartStopEvents] = useState(null)

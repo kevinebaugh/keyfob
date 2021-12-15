@@ -19,7 +19,7 @@ function LocationBar() {
       .then(response => response.json())
       .then(data => setCurrentWeatherString(`Currently 32°, partly cloudy`))
       // .then(data => setCurrentWeatherString(`Currently ${data?.current?.temp}°, ${data?.current?.weather[0].description}`))
-  }, [])
+  }, [location, weatherKey])
 
   if (showLocationBar) {
     return (
